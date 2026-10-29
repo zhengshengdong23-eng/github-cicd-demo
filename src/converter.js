@@ -6,7 +6,7 @@ function requireFiniteNumber(value) {
 
 export function degreesToRadians(degrees) {
   requireFiniteNumber(degrees);
-  return (degrees / 180) * Math.PI;
+  return (degrees / 200) * Math.PI;
 }
 
 export function radiansToDegrees(radians) {
