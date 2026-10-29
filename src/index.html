@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="通过角度转换器体验 GitHub Actions 自动测试、构建与部署。">
+  <title>角度实验室 · CI/CD Demo</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <header><a class="brand" href="./">ANGLE LAB <span>/ 角度实验室</span></a><a href="https://github.com/zhengshengdong23-eng/github-cicd-demo">GitHub ↗</a></header>
+    <section class="intro"><p class="eyebrow">从一次提交，到一个可用工具</p><h1>换个单位，<br><span>理解同一个角度。</span></h1><p>在角度与弧度之间转换。试试 180°，它恰好是 π 弧度。</p></section>
+    <section class="converter" aria-label="角度转换器">
+      <div class="fields"><div><label for="direction">转换方向</label><select id="direction"><option value="degrees">角度 ° → 弧度 rad</option><option value="radians">弧度 rad → 角度 °</option></select></div><div><label for="angle">输入数值</label><input id="angle" type="number" step="any" value="180"></div></div>
+      <div class="answer"><span>转换结果</span><output id="result" aria-live="polite"></output><p>π rad = 180° · 支持负数与小数</p></div>
+    </section>
+    <section class="about"><h2>这个页面，来自一条自动流水线。</h2><p>修改代码后，GitHub Actions 会运行测试、构建页面，并在 main 分支通过检查后发布。</p><ol><li><b>01</b>提交代码</li><li><b>02</b>自动测试</li><li><b>03</b>构建页面</li><li><b>04</b>部署上线</li></ol><a href="https://github.com/zhengshengdong23-eng/github-cicd-demo/actions">查看真实运行记录 ↗</a></section>
+    <footer>GitHub Actions × GitHub Pages <span>Build __BUILD_SHA__ · __BUILD_TIME__</span></footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
