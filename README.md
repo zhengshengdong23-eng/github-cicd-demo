@@ -57,9 +57,19 @@ python3 -m http.server 8080 --directory dist --bind 127.0.0.1
 | `scripts/build.js` | 生成 dist，写入提交号和构建时间 |
 | `.github/workflows/ci-cd.yml` | 触发条件、测试矩阵、任务依赖与部署 |
 
+## 本次实操记录
+
+- [演示 PR #1](https://github.com/zhengshengdong23-eng/github-cicd-demo/pull/1)：保留错误提交和后续修复过程。
+- [故意失败的 CI](https://github.com/zhengshengdong23-eng/github-cicd-demo/actions/runs/40854209965)：分母从 180 改为 200，Node 22 与 24 各有 4 个测试失败，Build 和 Deploy 被跳过。
+- 错误示例：180° 被算成 `2.827433388230814`，测试期待 `3.141592653589793`。错误版本的 PR 合并状态为 `BLOCKED`。
+- 修复提交恢复公式，并将网页顶部文案改为“从测试通过，到自动上线”，方便部署后肉眼确认更新。
+- 成功运行记录可以在 PR 的 Checks 与仓库 Actions 查看；部署后的短提交号显示在页面底部。
+
 ## GitHub 配置
 
 仓库使用公开可见性；GitHub Free 支持公开仓库的 Pages。Settings → Pages → Build and deployment → Source 应为 **GitHub Actions**。
+
+本仓库已为 `main` 启用分支保护：必须通过 PR 合并，`Test (Node 22)`、`Test (Node 24)` 和 `Build` 为必需检查，分支必须与 main 保持最新；规则也对管理员生效。不要求其他人审批，适合单人练习。请使用练习分支提交修改；直接 push main 会被拒绝。复制仓库时需要另行设置分支保护，它不是 YAML 文件的一部分。
 
 工作流默认只有 `contents: read`；部署任务额外使用 `pages: write` 与 `id-token: write`。无需自己填写服务器密码或 Personal Access Token。所有 Actions 固定到具体提交，旁边注释对应主版本。
 
